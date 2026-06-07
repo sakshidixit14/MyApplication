@@ -13,14 +13,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier){
+fun LoginComposable(name: String, modifier: Modifier = Modifier){
     val context = LocalContext.current
     val empname = remember { mutableStateOf("") }
     val email = remember { mutableStateOf("") }
@@ -122,8 +121,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier){
 }
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun LoginComposablePreview() {
     MyApplicationTheme {
-        Greeting("Android")
+        LoginComposable("Android")
     }
 }
