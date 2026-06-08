@@ -13,6 +13,7 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -34,11 +35,12 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 @PreviewScreenSizes
 @Composable
 fun MyApplicationApp() {
     var currentDestination by rememberSaveable { mutableStateOf(AppDestinations.HOME) }
-
+    var currentScreen by remember { mutableStateOf("main") }
     NavigationSuiteScaffold(
         navigationSuiteItems = {
             AppDestinations.entries.forEach {
@@ -57,10 +59,26 @@ fun MyApplicationApp() {
         }
     ) {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            SignupComposable(
-                name = "Android",
-                modifier = Modifier.padding(innerPadding)
-            )
+            when (currentScreen) {
+                "login" -> {
+                    LoginComposable("Android") {
+                        currentScreen = "main"
+                    }
+                }
+
+                "signup" -> {
+                    SignupComposable(name = "User"){
+                        currentScreen = "main"
+                    }
+                }
+
+                else -> {
+                    MainScreenComposable(
+                        paddingValues = innerPadding,
+                        onClick = { screen -> currentScreen = screen }  // Simple lambda
+                    )
+                }
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 @Composable
-fun LoginComposable(name: String, modifier: Modifier = Modifier) {
+fun LoginComposable(name: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
 //  Text(text = "Hello, $name!", modifier = modifier)
     val context = LocalContext.current
     val username = remember { mutableStateOf("") }
@@ -69,13 +69,21 @@ fun LoginComposable(name: String, modifier: Modifier = Modifier) {
         ) {
             Text(text = "Login")
         }
+        Button(
+            modifier = modifier,
+            onClick = {
+                onClick()
+            }
+        ) {
+            Text(text = "Go to Main")
+        }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
-fun LoginComposablePreview()
-{
+fun LoginComposablePreview() {
     MyApplicationTheme {
-        LoginComposable(("Android"))
+        LoginComposable(("Android"), onClick = {})
     }
 }
