@@ -19,51 +19,23 @@ import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 @Composable
-fun LoginComposable(name: String, modifier: Modifier = Modifier){
+fun LoginComposable(name: String, modifier: Modifier = Modifier) {
+//  Text(text = "Hello, $name!", modifier = modifier)
     val context = LocalContext.current
-    val empname = remember { mutableStateOf("") }
-    val email = remember { mutableStateOf("") }
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
-    val phone = remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(start = 8.dp, end = 8.dp),
 
-        verticalArrangement = Arrangement.SpaceEvenly
+            .fillMaxSize()
+            .padding(horizontal = 8.dp),
+        verticalArrangement = Arrangement.Center
     ) {
         val modifier = Modifier
             .fillMaxWidth()
         OutlinedTextField(
             onValueChange = { it ->
-                empname.value = it
-            },
-            value = empname.value,
-            modifier = modifier,
-            placeholder = {
-                Text(
-                    text = "EmpName",
-                )
-            }
-
-        )
-        OutlinedTextField(
-            onValueChange = { it ->
-                email.value = it
-            },
-            value = email.value,
-            modifier = modifier,
-            placeholder = {
-                Text(
-                    text = "Email",
-                )
-            }
-
-        )
-        OutlinedTextField(
-            onValueChange = {
                 username.value = it
             },
             value = username.value,
@@ -75,10 +47,8 @@ fun LoginComposable(name: String, modifier: Modifier = Modifier){
             }
 
         )
-
-
         OutlinedTextField(
-            onValueChange = {
+            onValueChange = { it ->
                 password.value = it
             },
             value = password.value,
@@ -88,41 +58,24 @@ fun LoginComposable(name: String, modifier: Modifier = Modifier){
                     text = "Password",
                 )
             }
-        )
-        OutlinedTextField(
-            onValueChange = { it ->
-                phone.value = it
-            },
-            value = phone.value,
-            modifier = modifier,
-            placeholder = {
-                Text(
-                    text = "Phone",
-                )
-            }
 
         )
         Button(
-            modifier = modifier,
             onClick = {
-                if (username.value == "abc" && password.value == "xyz") {
-                    Toast.makeText(context, "login sucess", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(context, "login failed", Toast.LENGTH_SHORT).show()
-                }
-            }
-
+                Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
+            },
+            modifier = Modifier
+                .fillMaxWidth()
         ) {
-            Text(text = "Click Me")
+            Text(text = "Login")
         }
     }
-
-
 }
 @Preview(showBackground = true)
 @Composable
-fun LoginComposablePreview() {
+fun LoginComposablePreview()
+{
     MyApplicationTheme {
-        LoginComposable("Android")
+        LoginComposable(("Android"))
     }
 }
