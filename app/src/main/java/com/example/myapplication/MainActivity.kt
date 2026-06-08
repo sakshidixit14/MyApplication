@@ -57,7 +57,7 @@ fun MyApplicationApp() {
         }
     ) {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            LoginComposable(
+            SignupComposable(
                 name = "Android",
                 modifier = Modifier.padding(innerPadding)
             )

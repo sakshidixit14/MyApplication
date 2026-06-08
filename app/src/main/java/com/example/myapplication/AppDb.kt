@@ -23,6 +23,7 @@ abstract class AppDb : RoomDatabase() {
                     klass = AppDb::class.java,
                     name = "sakshi_database"
                 ).build()
+                    .also { roomDbInstance = it }
             }
         }
     }
