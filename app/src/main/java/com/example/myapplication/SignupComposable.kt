@@ -40,7 +40,7 @@ fun SignupComposable(
         modifier = Modifier
             .fillMaxSize()
             .padding(start = 8.dp, end = 8.dp),
-        verticalArrangement = Arrangement.SpaceEvenly
+        verticalArrangement = Arrangement.Center,
     ) {
         val modifier = Modifier
             .fillMaxWidth()
@@ -150,6 +150,6 @@ fun SignupComposable(
 @Composable
 fun SignupComposablePreview() {
     MyApplicationTheme {
-        LoginComposable("Android", onClick = {})
+        SignupComposable("Android", onClick = {})
     }
 }

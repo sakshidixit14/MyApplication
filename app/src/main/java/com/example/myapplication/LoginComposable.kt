@@ -47,9 +47,6 @@ fun LoginComposable(name: String, modifier: Modifier = Modifier, onClick: () -> 
             },
             value = username.value,
             modifier = textFieldModifier,
-            label = {
-                Text("Username")
-            },
             placeholder = {
                 Text(text = "username")
             }
@@ -60,9 +57,7 @@ fun LoginComposable(name: String, modifier: Modifier = Modifier, onClick: () -> 
             onValueChange = { it ->
                 password.value = it
             },
-            label = {
-                Text("Password")
-            },
+
             placeholder = {
                 Text("password")
             },
@@ -81,7 +76,7 @@ fun LoginComposable(name: String, modifier: Modifier = Modifier, onClick: () -> 
             Text("Forgot Password?")
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+      Spacer(modifier = Modifier.height(16.dp))
 
         Button(
             modifier = Modifier
