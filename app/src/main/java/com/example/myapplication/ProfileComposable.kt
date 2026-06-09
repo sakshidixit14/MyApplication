@@ -34,6 +34,7 @@ fun ProfileComposable(name: String, modifier: Modifier = Modifier,onClick:  () -
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val phone = remember { mutableStateOf("") }
+    val department = remember { mutableStateOf("") }
 
     val coroutine = rememberCoroutineScope()
     Column(
@@ -111,6 +112,18 @@ fun ProfileComposable(name: String, modifier: Modifier = Modifier,onClick:  () -
                 placeholder = {
                     Text(
                         text = "Phone",
+                    )
+                }
+            )
+            OutlinedTextField(
+                onValueChange = { it ->
+                    department.value = it
+                },
+                value = department.value,
+                modifier = modifier,
+                placeholder = {
+                    Text(
+                        text = "Department",
                     )
                 }
             )
