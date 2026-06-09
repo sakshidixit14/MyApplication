@@ -67,16 +67,22 @@ fun MyApplicationApp() {
                 }
 
                 "signup" -> {
-                    SignupComposable(name = "User"){
+                    SignupComposable(name = "User") {
                         currentScreen = "main"
                     }
                 }
-                    "profile" -> {
-                        ProfileComposable(name = "User")
-                        {
-                            currentScreen = "main"
-                        }
+
+                "profile" -> {
+                    ProfileComposable(name = "User")
+                    {
+                        currentScreen = "main"
                     }
+                }
+
+                "emp_list" -> {
+                    MyListComposable(name ="")
+                }
+
                 else -> {
                     MainScreenComposable(
                         paddingValues = innerPadding,

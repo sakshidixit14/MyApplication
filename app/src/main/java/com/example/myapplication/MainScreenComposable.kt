@@ -54,6 +54,17 @@ fun MainScreenComposable(
         ) {
             Text("Profile Screen")
         }
+
+        Button(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(40.dp),
+            onClick = {
+                onClick.invoke("emp_list")
+            }
+        ) {
+            Text("Employee List")
+        }
     }
 }
 

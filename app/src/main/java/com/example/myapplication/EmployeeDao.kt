@@ -11,5 +11,5 @@ interface EmployeeDao {
     suspend fun insert(employee: Employee)
 
     @Query("select * from employee")
-    suspend fun getEmployee(): Employee
+    suspend fun getAllEmployees(): List<Employee>
 }
