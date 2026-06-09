@@ -71,7 +71,12 @@ fun MyApplicationApp() {
                         currentScreen = "main"
                     }
                 }
-
+                    "profile" -> {
+                        ProfileComposable(name = "User")
+                        {
+                            currentScreen = "main"
+                        }
+                    }
                 else -> {
                     MainScreenComposable(
                         paddingValues = innerPadding,

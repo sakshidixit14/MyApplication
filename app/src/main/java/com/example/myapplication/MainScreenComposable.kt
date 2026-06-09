@@ -56,3 +56,5 @@ fun MainScreenComposable(
         }
     }
 }
+
+fun Column(modifier: Modifier, content: () -> Unit) {}

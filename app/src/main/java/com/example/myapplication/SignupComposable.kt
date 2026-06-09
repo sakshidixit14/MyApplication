@@ -132,7 +132,7 @@ fun SignupComposable(
                 }
             }
         ) {
-            Text(text = "Click Me")
+            Text(text = "Signup")
         }
 
         Button(

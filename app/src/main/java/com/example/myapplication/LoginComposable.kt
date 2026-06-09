@@ -3,17 +3,22 @@ package com.example.myapplication
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
@@ -27,50 +32,77 @@ fun LoginComposable(name: String, modifier: Modifier = Modifier, onClick: () -> 
 
     Column(
         modifier = Modifier
-
             .fillMaxSize()
-            .padding(horizontal = 8.dp),
-        verticalArrangement = Arrangement.Center
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally
     ) {
-        val modifier = Modifier
+        val textFieldModifier = Modifier
             .fillMaxWidth()
+            .padding(bottom = 12.dp)
+
         OutlinedTextField(
             onValueChange = { it ->
                 username.value = it
             },
             value = username.value,
-            modifier = modifier,
+            modifier = textFieldModifier,
+            label = {
+                Text("Username")
+            },
             placeholder = {
-                Text(
-                    text = "Username",
-                )
+                Text(text = "username")
             }
-
         )
+
         OutlinedTextField(
+            value = password.value,
             onValueChange = { it ->
                 password.value = it
             },
-            value = password.value,
-            modifier = modifier,
+            label = {
+                Text("Password")
+            },
             placeholder = {
-                Text(
-                    text = "Password",
-                )
-            }
+                Text("password")
+            },
+            modifier = textFieldModifier,
 
         )
-        Button(
+
+        TextButton(
             onClick = {
-                Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Reset password ", Toast.LENGTH_SHORT).show()
             },
             modifier = Modifier
+                .align(androidx.compose.ui.Alignment.End)
+                .padding(bottom = 16.dp)
+        ) {
+            Text("Forgot Password?")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            modifier = Modifier
                 .fillMaxWidth()
+                .height(48.dp)
+                .padding(bottom = 12.dp),
+            onClick = {
+                if (username.value == "abc" && password.value == "xyz") {
+                    Toast.makeText(context, "Login success", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "Login failed", Toast.LENGTH_SHORT).show()
+                }
+            }
         ) {
             Text(text = "Login")
         }
+
         Button(
-            modifier = modifier,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp),
             onClick = {
                 onClick()
             }
